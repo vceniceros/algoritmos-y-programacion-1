@@ -1,13 +1,10 @@
 def interes_compuesto(capital_inicial, tiempo_de_inversion, porcentaje_de_rentabilidad):
-    """calcula el interes compuesto
-    >>>interes_compuesto(100, 3,3)
-     109,2727
-    
-    """
     #tu codigo
-    porcentaje= 1.0+porcentaje_de_rentabilidad/100
-    auxiliar = porcentaje**tiempo_de_inversion
-    interes_final = auxiliar*capital_inicial
-    
-    return interes_final
+   
+    for i in range(1,tiempo_de_inversion):
+         porcentaje = capital_inicial * porcentaje_de_rentabilidad/100
+        capital = capital_inicial + porcentaje
+        ganancia_total= capital+porcentaje
+        
+    return ganancia_total
 print(interes_compuesto(100,3,3))
