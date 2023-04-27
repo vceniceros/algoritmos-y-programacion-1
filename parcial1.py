@@ -35,31 +35,28 @@ def elegir(actividades_de_ciudad,actividades_deseadas,costo_por_actividad):
     return actividades_en_comun >= CANTIDAD_MINIMA_ACTIVIDADES and costo_por_actividad*actividades_en_comun <= COSTO_MAX
 def diccionario(votaciones):
     """
-    >>> lista_1 = [["Juan",10],["Mariano",4],["Pepe",7]]
+    >>> lista_1 = [["Juan",10],["Mariano",4],["Pepe",7],["Juan",8],["Mariano",7],["Pepe",9],["Juan",9],["Mariano",6],["Pepe",8]]
     >>> lista_2 = [["Juan",8],["Mariano",7],["Pepe",9]]
     >>> lista_3 = [["Juan",9],["Mariano",6],["Pepe",8]]
     >>> lista_4 = [["Juan",7],["Mariano",1],["Pepe",5]]
     >>> lista_5 = [["Juan",10],["Mariano",5],["Pepe",9]]
-    >>> diccionario(lista_1)
+    >>> diccionario(lista_1) 
     {'Juan': 10, 'Mariano': 4, 'Pepe': 7}
-    >>> diccionario(lista_3)
-    {'Juan': 9, 'Mariano': 6, 'Pepe': 8}
     """
     dicc = {}
     PARTICIPANTE = 0
     PUNTO = 1
+    dicc = {}
+    PARTICIPANTE = 0
+    PUNTO = 1
     for voto in votaciones:
-       if voto[PARTICIPANTE] in dicc:
-           dicc[voto[PARTICIPANTE]]+=voto[PUNTO]
+       lista = []
+       suma_notas = voto[PUNTO]
+       cantidad = 1
+       promedio = suma_notas/cantidad
+       if voto[PARTICIPANTE] not in dicc:
+           dicc[voto[PARTICIPANTE]]=[suma_notas,cantidad,promedio]
        else:
            dicc[voto[PARTICIPANTE]]=voto[PUNTO]
     return dicc
-def promedio(puntajes):
-    """
-    >>> lista_1 = [["Juan",10],["Mariano",4],["Pepe",7]]
-    >>> lista_2 = [["Juan",8],["Mariano",7],["Pepe",9]]
-    >>> lista_3 = [["Juan",9],["Mariano",6],["Pepe",8]]
-    >>> promedio(lista_1)
-    []
-    """
 doctest.testmod()
