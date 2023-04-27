@@ -59,4 +59,5 @@ def diccionario(votaciones):
            dicc[voto[PARTICIPANTE]][SUMA_PUNTOS]+=suma_notas
            dicc[voto[PARTICIPANTE]][CANTIDAD]+=1
     return dicc
+
 doctest.testmod()
