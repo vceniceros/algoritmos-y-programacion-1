@@ -68,7 +68,6 @@ def promedio(lista):
     >>> promedio(lista_1)
     [('Juan', 9), ('Pepe', 8), ('Mariano', 5)]
     """
-    NOMBRE= 0
     PUNTOS = 1
     PROMEDIO = 2 
     dicc = diccionario(lista)
