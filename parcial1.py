@@ -46,18 +46,20 @@ def diccionario(votaciones):
     dicc = {}
     PARTICIPANTE = 0
     PUNTO = 1
+    PROMEDIO = 2
     dicc = {}
     SUMA_PUNTOS = 0
     CANTIDAD = 1
     for voto in votaciones:
        suma_notas = voto[PUNTO]
        cantidad = 1
-       promedio = suma_notas/cantidad
        if voto[PARTICIPANTE] not in dicc:
-           dicc[voto[PARTICIPANTE]]=[suma_notas,cantidad,promedio]
+           dicc[voto[PARTICIPANTE]]=[suma_notas,cantidad,suma_notas]
        else:
            dicc[voto[PARTICIPANTE]][SUMA_PUNTOS]+=suma_notas
            dicc[voto[PARTICIPANTE]][CANTIDAD]+=1
+           dicc[voto[PARTICIPANTE]][PROMEDIO] = dicc[voto[PARTICIPANTE]][SUMA_PUNTOS]
+           dicc[voto[PARTICIPANTE]][PROMEDIO] = dicc[voto[PARTICIPANTE]][PROMEDIO]/dicc[voto[PARTICIPANTE]][CANTIDAD]
     return dicc
 
 doctest.testmod()
