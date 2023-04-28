@@ -41,7 +41,7 @@ def diccionario(votaciones):
     >>> lista_4 = [["Juan",7],["Mariano",1],["Pepe",5]]
     >>> lista_5 = [["Juan",10],["Mariano",5],["Pepe",9]]
     >>> diccionario(lista_1) 
-    {'Juan': 10, 'Mariano': 4, 'Pepe': 7}
+    {'Juan': [27, 3, 9], 'Mariano': [17, 3, 5], 'Pepe': [24, 3, 8]}
     """
     dicc = {}
     PARTICIPANTE = 0
@@ -60,6 +60,19 @@ def diccionario(votaciones):
            dicc[voto[PARTICIPANTE]][CANTIDAD]+=1
            dicc[voto[PARTICIPANTE]][PROMEDIO] = dicc[voto[PARTICIPANTE]][SUMA_PUNTOS]
            dicc[voto[PARTICIPANTE]][PROMEDIO] = dicc[voto[PARTICIPANTE]][PROMEDIO]/dicc[voto[PARTICIPANTE]][CANTIDAD]
+           dicc[voto[PARTICIPANTE]][PROMEDIO] = int(dicc[voto[PARTICIPANTE]][PROMEDIO])
     return dicc
-
+def promedio(lista):
+    """
+    >>> lista_1 = [["Juan",10],["Mariano",4],["Pepe",7],["Juan",8],["Mariano",7],["Pepe",9],["Juan",9],["Mariano",6],["Pepe",8]]
+    >>> promedio(lista_1)
+    [('Juan', 9), ('Pepe', 8), ('Mariano', 5)]
+    """
+    NOMBRE= 0
+    PUNTOS = 1
+    PROMEDIO = 2 
+    dicc = diccionario(lista)
+    promedios = sorted(dicc.items(),key=lambda x: x[PUNTOS][PROMEDIO],reverse=True)
+    resultado = [(nombre, prom[PROMEDIO]) for (nombre,prom) in promedios]
+    return resultado
 doctest.testmod()
