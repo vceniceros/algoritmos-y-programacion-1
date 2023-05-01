@@ -78,7 +78,7 @@ def procesar_partidos(lista):
     SUMA=1
     for mesa in lista:
         if mesa[PARTIDO] not in dicc:
-            dicc[mesa[PARTIDO]]=mesa[DIPUTADOS]+mesa[SENADORES]
+            dicc.update({mesa[PARTIDO]: mesa[DIPUTADOS]+mesa[SENADORES]})
         else:
             dicc[mesa[PARTIDO]]+=mesa[DIPUTADOS]+mesa[SENADORES]
     return dicc
