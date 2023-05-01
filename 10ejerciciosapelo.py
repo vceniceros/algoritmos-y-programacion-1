@@ -1,4 +1,5 @@
 import doctest
+from string import ascii_lowercase
 def numero_complejo(tupla):
     """
     Escribir una función que reciba un número complejo
@@ -82,16 +83,87 @@ def lista_max_frecuencia(texto):
        y devuelva una lista con la/s palabras que tienen la máxima frecuencia.
     >>> palabra = 'se viene boca se viene boca esto es boca aguante boca'
     >>> lista_max_frecuencia(palabra)
-    ['boca']
+    [('boca', 4)]
      """
      dicc = frecuencia(texto)
      mayor = []
-     lista = dicc.items()
-     for palabra in lista:
-          max_count = 0
-          palabra_mas_contada = ''
-          if palabra[1] > max_count:
-               palabra_mas_contada = palabra[0]
-     mayor.append(palabra_mas_contada)
+     CONTEO = 1
+     PALABRA = 0
+     palabra_mas_contada = ''
+     max_count = 0
+     for palabra in dicc.items():
+          if palabra[CONTEO] > max_count:
+               max_count = palabra[CONTEO]
+     mayor = [x for x in dicc.items() if x[CONTEO] == max_count]
      return mayor
-doctest.testmod()
+def palindromo(texto):
+     """
+     >>> frase = 'con mis amigos nos fuimos de viaje a neuquen'
+     >>> palindromo(frase)
+     ['neuquen']
+     """
+     lista = []
+     ULTIMA_LETRA = -1
+     palabras = texto.split()
+     for palabra in palabras:
+          if palabra==palabra[::ULTIMA_LETRA] and len(palabra) > 1:
+               lista.append(palabra)
+     return lista
+def pangrama(texto):
+     """
+     >>> texto_1 = 'sabrina te amo'
+     >>> texto_2 = 'the quick brown fox jumps over the lazy dog'
+     >>> pangrama(texto_1)
+     False
+     >>> pangrama(texto_2)
+     True
+     """
+     resutado = False
+     letras = []
+     for i in range(len(texto)):
+          if texto[i] not in letras and texto[i] != ' ':
+               letras.append(texto[i])
+     if len(letras) == len(ascii_lowercase):
+          resutado = True
+     return resutado
+def dias_de_juntada(diccionario):
+     """
+     >>> dias = { 'Juan': ['MIE', 'VIE', 'SAB'], 'Jose': ['VIE', 'SAB', 'DOM'], 'Jorge': ['JUE', 'VIE', 'SAB'] }
+     >>> dias_de_juntada(dias)
+     ['VIE', 'SAB']
+     """
+     dias_disponibles = []
+     dias_juntada = []
+
+     for dias in diccionario.values():
+          if dias not in dias_disponibles:
+               dias_disponibles+=dias
+     for dias in dias_disponibles:
+          if dias not in dias_juntada and dias_disponibles.count(dias) == len(diccionario):
+               dias_juntada.append(dias)
+     return dias_juntada
+def es_un_pelotudo(cosas_que_hace,cosas_de_pelotudo):
+     """
+     >>> cosas_hechas = {'que no se disculpe': 2, 'ser peronista': 3, 'ser infiel': 0, 'que digas que star wars es ciencia ficcion': 1, 'recicla': 3, 'trata bien a su novia': 10}
+     >>> cosas_pelotudas = ['que no se disculpe', 'ser peronista', 'ser infiel', 'que digas que star wars es ciencia ficcion']
+     >>> es_un_pelotudo(cosas_hechas,cosas_pelotudas)
+     True
+     >>> cosas_pelotudas_sabri = ['no entender indirectas', 'cortar conversaciones', 'ignorarme']
+     >>> cosas_que_hago = {'no entender indirectas': 5, 'cortar conversaciones': 3, 'ignorarme': 3, 'darme amor': 4}
+     >>> es_un_pelotudo(cosas_que_hago, cosas_pelotudas_sabri)
+     True
+     """
+     acumulacion_de_pelotudeces = 0
+     cantidad_de_pelotudeces_por_dia = 0
+     CONSTANTE_PELOTUDA = 3
+     resultado = False
+     for pelotudes in cosas_que_hace.keys():
+          if pelotudes in cosas_de_pelotudo:
+               acumulacion_de_pelotudeces+=1
+     for cantidad in cosas_que_hace.values():
+          if cantidad >= CONSTANTE_PELOTUDA:
+               cantidad_de_pelotudeces_por_dia+=1
+     if cantidad_de_pelotudeces_por_dia*acumulacion_de_pelotudeces > len(cosas_que_hace):
+          resultado = True
+     return resultado
+doctest.testmod() 
