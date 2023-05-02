@@ -166,4 +166,143 @@ def es_un_pelotudo(cosas_que_hace,cosas_de_pelotudo):
      if cantidad_de_pelotudeces_por_dia*acumulacion_de_pelotudeces > len(cosas_que_hace):
           resultado = True
      return resultado
+def escribir_nota(nota,texto):
+     """
+     Se desea escribir una nota de rescate recortando letras de una revista.
+     Escribir una función que reciba
+     por parámetro la nota que se desea escribir y el texto completo de la revista, 
+     y devuelva True si la revista contiene todas las letras necesarias para escribir la nota 
+     (ignorando mayúsculas y minúsculas), False en caso contrario.
+
+     Ejemplo: Si la revista contiene "Algoritmos y Programacion", podemos
+     escribir la nota "Gracias por la moto", p
+     ero no se puede escribir "Porotos amargos" (falta una s).
+     >>> palabra = 'algoritmos y programacion'
+     >>> nota_1 = 'Porotos amargos'
+     >>> nota_2 = 'gracias por la moto'
+     >>> escribir_nota(nota_1, palabra)
+     False
+     >>> escribir_nota(nota_2, palabra)
+     False
+     """
+     dicc_nota = {}
+     dicc_texto = {}
+     resultado = False
+     for i in range(len(nota)):
+          if nota[i] not in dicc_nota and nota[i] != " ":
+               dicc_nota[nota[i]]=1
+          elif nota[i] != " ": 
+               dicc_nota[nota[i]]+=1
+     for i in range(len(texto)):
+          if texto[i] not in dicc_texto and texto[i] != " ":
+               dicc_texto[texto[i]]=1
+          elif texto[i] != " ":
+               dicc_texto[texto[i]]+=1
+     cantidad_de_letras_nota = 0
+     cantidad_de_letras_texto = 0
+     for cantidad in dicc_nota.values():
+          cantidad_de_letras_nota+=cantidad
+     for cantidad in dicc_texto.values():
+          cantidad_de_letras_texto+=cantidad
+     claves_texto = [x for x in dicc_texto.keys()]
+     for letras in dicc_nota.keys():
+          acum_letras_de_nota_en_texto = 0
+          if letras in claves_texto:
+               acum_letras_de_nota_en_texto +=1
+     if acum_letras_de_nota_en_texto == len(dicc_nota.keys()) and cantidad_de_letras_texto >= cantidad_de_letras_nota:
+          resultado = True
+     return resultado
+def normalizar(letra):
+     """
+     >>> normalizar('á')
+     'a'
+     """
+     letra_normalizada = ''
+     if letra.isupper():
+          letra_normalizada = letra.lower()
+     elif letra == 'á':
+          letra_normalizada = 'a'
+     elif letra =='é':
+          letra_normalizada ='e'
+     elif letra == 'í':
+          letra_normalizada = 'i'
+     elif letra == 'ó':
+          letra_normalizada = 'o'
+     elif letra == 'ú':
+          letra_normalizada = 'u'
+     else:
+          letra_normalizada = letra
+     return letra_normalizada
+def contar(cadena):
+      """
+          >>> contar("aaaáb")
+          2
+          >>> contar("1+#/_")
+          0
+          >>> contar("algoritmos y programacion 1")
+          13
+     """   
+      lista = []
+      for letra in cadena:
+          letra = normalizar(letra)
+          if letra not in lista and letra.isalpha():
+               lista.append(letra)
+      return len(lista)
+def elegir(actividad_por_ciudad, actividades_deseadas, precio_por_actividad,COSTO_MAXIMO = 20000,CANTIDAD_MINIMA_ACTIVIDADES = 3):
+      """ 
+      >>> lista_1 = ["museo","senderismo","bares","montañismo"]
+     >>> lista_2 = ["bares","senderismo","museo","conciertos"]
+     >>> lista_3 = ["museo","conciertos","bares"]
+     >>> elegir(lista_1,lista_2, 5000)
+     True
+     >>> elegir(lista_1,lista_3, 1000)
+     False
+     >>> elegir(lista_1,lista_2, 10000)
+     False
+      """
+      resultado = False
+      actividades_de_ciudad_deseadas = 0
+      for activad in actividad_por_ciudad:
+           if activad in actividades_deseadas:
+                actividades_de_ciudad_deseadas+=1
+      if actividades_de_ciudad_deseadas >= CANTIDAD_MINIMA_ACTIVIDADES and actividades_de_ciudad_deseadas*precio_por_actividad <= COSTO_MAXIMO:
+           resultado = True
+      return resultado
+def camino_a_la_fama_diccionario(lista):
+     """
+     >>> lista_1 = [["Juan",10],["Mariano",4],["Pepe",7],["Juan",8],["Mariano",7],["Pepe",9],["Juan",9],["Mariano",6],["Pepe",8]]
+    >>> camino_a_la_fama_diccionario(lista_1) 
+    {'Juan': [27, 3, 9], 'Mariano': [17, 3, 5], 'Pepe': [24, 3, 8]}
+     """
+     dicc = {}
+     PARTICIPANTE = 0
+     PUNTO = 1
+     SUMA_PUNTOS=0
+     CANTIDAD = 1
+     PROMEDIO = 2
+     for voto in lista:
+          suma_puntos = voto[PUNTO]
+          cantidad_votos = 1
+          promedio = voto[PUNTO]
+          if voto[PARTICIPANTE] not in dicc:
+               dicc[voto[PARTICIPANTE]]=[suma_puntos,cantidad_votos,promedio]
+          else:
+               dicc[voto[PARTICIPANTE]][SUMA_PUNTOS]+=suma_puntos
+               dicc[voto[PARTICIPANTE]][CANTIDAD]+=1
+               dicc[voto[PARTICIPANTE]][PROMEDIO]=dicc[voto[PARTICIPANTE]][SUMA_PUNTOS]
+               dicc[voto[PARTICIPANTE]][PROMEDIO]=dicc[voto[PARTICIPANTE]][PROMEDIO]/dicc[voto[PARTICIPANTE]][CANTIDAD]
+               dicc[voto[PARTICIPANTE]][PROMEDIO]=int(dicc[voto[PARTICIPANTE]][PROMEDIO])
+     return dicc     
+def camino_a_la_fama(lista):
+     """ 
+      >>> lista_1 = [["Juan",10],["Mariano",4],["Pepe",7],["Juan",8],["Mariano",7],["Pepe",9],["Juan",9],["Mariano",6],["Pepe",8]]
+      >>> camino_a_la_fama(lista_1)
+      [('Juan', 9), ('Pepe', 8), ('Mariano', 5)]
+     """
+     PROM = 2
+     PROM_L = 1
+     dicc = camino_a_la_fama_diccionario(lista)
+     lista = [(nombre, promedio[PROM]) for (nombre, promedio) in dicc.items()]
+     lista.sort(key=lambda x:x[PROM_L],reverse=True)
+     return lista
 doctest.testmod() 

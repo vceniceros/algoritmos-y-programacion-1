@@ -36,14 +36,9 @@ def elegir(actividades_de_ciudad,actividades_deseadas,costo_por_actividad):
 def diccionario(votaciones):
     """
     >>> lista_1 = [["Juan",10],["Mariano",4],["Pepe",7],["Juan",8],["Mariano",7],["Pepe",9],["Juan",9],["Mariano",6],["Pepe",8]]
-    >>> lista_2 = [["Juan",8],["Mariano",7],["Pepe",9]]
-    >>> lista_3 = [["Juan",9],["Mariano",6],["Pepe",8]]
-    >>> lista_4 = [["Juan",7],["Mariano",1],["Pepe",5]]
-    >>> lista_5 = [["Juan",10],["Mariano",5],["Pepe",9]]
     >>> diccionario(lista_1) 
     {'Juan': [27, 3, 9], 'Mariano': [17, 3, 5], 'Pepe': [24, 3, 8]}
     """
-    dicc = {}
     PARTICIPANTE = 0
     PUNTO = 1
     PROMEDIO = 2
