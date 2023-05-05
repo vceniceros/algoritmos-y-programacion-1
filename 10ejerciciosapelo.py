@@ -305,4 +305,153 @@ def camino_a_la_fama(lista):
      lista = [(nombre, promedio[PROM]) for (nombre, promedio) in dicc.items()]
      lista.sort(key=lambda x:x[PROM_L],reverse=True)
      return lista
+def validar(clave,MAX_LONG = 12,MIN_LONG = 8, CARAC = ['*', '-', '$', '@'],TILDES = ['á', 'é', 'í', 'ó', 'ú', 'Á', 'É', 'Í', 'Ó', 'Ú']):
+     """
+     >>> clave_1 = 'Algoritmo $1'
+     >>> clave_2 = 'Aprobé-con-7'
+     >>> clave_3 = 'Algoritmo$1'
+     >>> clave_4 = 'Aprobe-con-7'
+     >>> validar(clave_1)
+     False
+     >>> validar(clave_2)
+     False
+     >>> validar(clave_3)
+     True
+     >>> validar(clave_4)
+     True
+     """
+     cont_may = cont_min = cont_num = cont_carac = cont_esp =  cont_tilde = cont_carac_inva= i = 0
+     
+     resultado = False
+     while i < len(clave):
+        if clave[i].isspace():
+            cont_esp += 1
+        elif clave[i] not in CARAC and not clave[i].isalpha() and not clave[i].isnumeric():
+            cont_carac_inva += 1
+        elif clave[i] in TILDES:
+            cont_tilde += 1
+        elif clave[i].isupper():
+            cont_may += 1
+        elif clave[i].islower():
+            cont_min += 1
+        elif clave[i].isnumeric():
+            cont_num += 1
+        elif clave[i] in CARAC:
+            cont_carac += 1
+        i += 1
+
+     if cont_may >= 1 and cont_min >= 1 and cont_num >= 1 and cont_carac >= 1 and cont_carac_inva == 0 and cont_esp == 0 and cont_tilde == 0 and len(clave) >= MIN_LONG and len(clave) <= MAX_LONG:
+        resultado = True
+     return resultado
+def elegir(lista_1,lista_2,cuota,PRESUPUESTO = 5000,CANTIDAD_MIN_ACTI = 3):
+    """
+    >>> lista_1 = ["natación", "gimnasio", "voley", "futbol"]
+    >>> lista_2  = ["natación", "voley", "gimnasio"] 
+    >>> lista_3 = ["natación", "futbol", "karate"]
+    >>> elegir(lista_1, lista_2, 5000) 
+    True
+    >>> elegir(lista_2, lista_3,100)
+    False
+    >>> elegir(lista_2, lista_2,5500)
+    False
+    """
+    actividades_similares = 0
+    resultado = False
+    for actividad in lista_1:
+         if actividad in lista_2:
+              actividades_similares +=1
+    if actividades_similares >= CANTIDAD_MIN_ACTI and cuota <= PRESUPUESTO:
+         resultado = True
+    return resultado
+def procesar_partidos(lista):
+     """
+     >>> lista_1 = [["PP", 19, 35], ["PSOE", 20, 30], ["VOX", 15, 15], ["PP", 0, 151],["PSOE", 20, 0],["VOX", 0, 11]]
+     >>> procesar_partidos(lista_1)
+     {'PP': 205, 'PSOE': 70, 'VOX': 41}
+     """
+     dicc = {}
+     NOMBRE = 0
+     DIPUTADOS = 1
+     SENADORES = 2
+     for partido in lista:
+          if partido[NOMBRE] not in dicc:
+               dicc[partido[NOMBRE]]=partido[DIPUTADOS]+partido[SENADORES]
+          else:
+               dicc[partido[NOMBRE]]+=partido[DIPUTADOS]+partido[SENADORES]
+     return dicc
+def ordenar_votos(lista):
+     """
+     >>> lista_1 = [["PP", 19, 35], ["PSOE", 20, 30], ["VOX", 15, 15], ["PP", 0, 151],["PSOE", 20, 0],["VOX", 0, 11]]
+     >>> ordenar_votos(lista_1)
+     [('PP', 205), ('PSOE', 70), ('VOX', 41)]
+     """
+     VOTOS =1
+     dicc = procesar_partidos(lista)
+     lista_ordenada = [x for x in dicc.items()]
+     lista_ordenada.sort(reverse=True, key=lambda x:x[VOTOS])
+     return lista_ordenada
+def mayor_y_menor(lista):
+     """
+     >>> lista = [21, 4, 5, 6, 7, 15, 10, 3, 42, 2]
+     >>> mayor_y_menor(lista)
+     [2, 42]
+     """
+     max = 0
+     min = 0
+     max_min = []
+     for numero in lista:
+          min = numero
+          if numero > max:
+               max = numero
+          elif numero < min:
+               min = numero
+     max_min.append(min)
+     max_min.append(max)
+     return max_min
+def contar_letra_en_texto(texto):
+     """
+     >>> palabra = 'Hola mundo'
+     >>> contar_letra_en_texto(palabra)
+     {'H': 1, 'o': 2, 'l': 1, 'a': 1, ' ': 1, 'm': 1, 'u': 1, 'n': 1, 'd': 1}
+     """
+     dicc = {}
+     for letra in range(len(texto)):
+          if texto[letra] not in dicc:
+               dicc[texto[letra]]=1
+          else:
+               dicc[texto[letra]]=texto.count(texto[letra])
+     return dicc
+def pedir_votos():
+     continuar = 's'
+     lista = []
+     while continuar != 'n':
+          partido = input("Ingrese el partido a sumarle votos: ")
+          voto = int(input("Ingrese la cantidad de votos a sumarle:"))
+          lista.append((partido, voto))
+          continuar = input("Desea seguir ingresando?(s/n): ")
+          if continuar !='s' and continuar !='n':
+               continuar = input("tecla equivocada, desea continuar con la votacion?: ")
+     return lista
+def procesar_votos(PARTIDO = 0, VOTO = 1):
+     lista = pedir_votos()
+     dicc = {}
+     
+     for voto in lista:
+          if voto[PARTIDO] not in dicc:
+               dicc[voto[PARTIDO]]=voto[VOTO]
+          else:
+               dicc[voto[PARTIDO]]+=voto[VOTO]
+     return dicc
+def ordernar_votos_nuevos(VOTO = 1):
+     dicc = procesar_votos()
+     lista = [x for x in dicc.items()]
+     lista.sort(reverse=True,key= lambda x:x[VOTO])
+     return lista
+def main(PARTIDO = 0,VOTOS = 1):
+     lista = ordernar_votos_nuevos()
+     cadena = ''
+     for votos in lista:
+          cadena += 'El partido {} obtuvo {} votos.\n'.format(votos[PARTIDO],votos[VOTOS])
+     return print(cadena)
+main()
 doctest.testmod() 
