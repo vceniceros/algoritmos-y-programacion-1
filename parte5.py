@@ -22,8 +22,7 @@ def play_match():
         play_again = str(input("si desea seguir jugando, escriba ok: "))
         if play_again != 'ok':
             decision = False
-    
-
+            
 def main():
     """ 
     ejecuta el juego
