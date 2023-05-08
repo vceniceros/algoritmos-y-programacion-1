@@ -9,7 +9,7 @@
 #insercion: es excelente si la lista esta mas o menos ordenada y hayh que hacer pocas comparaciones
 import random
 import time
-MAX = 10000
+MAX = 100000
 
 def intercambiar(l, i, j):
     aux = l[i]
@@ -62,13 +62,11 @@ def main():
    
    ti1 = time.time()
    insercion(l1)
-   print(l1)
    tf1 = time.time()
    t1 = tf1-ti1
    
    ti2 = time.time()
    seleccion(l2)
-   print(l2)
    tf2 = time.time()
    t2 = tf2-ti2
    

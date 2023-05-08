@@ -1,7 +1,7 @@
 import time
 import random
 
-MAX = 1000000
+MAX = 10000000
 
 def busqueda(lista, valor):
     
@@ -53,8 +53,7 @@ def main():
     tf2 = time.time()
     t2 = tf2-ti2
     
-    print(lista1)
-    print(lista2)
+    
     print("busqueda tomo :", t1)
     print("posicion: ", posicion1)
     
