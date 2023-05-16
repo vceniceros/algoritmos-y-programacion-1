@@ -9,7 +9,7 @@
 #insercion: es excelente si la lista esta mas o menos ordenada y hayh que hacer pocas comparaciones
 import random
 import time
-MAX = 100000
+MAX = 10000
 
 def intercambiar(l, i, j):
     aux = l[i]
@@ -59,7 +59,8 @@ def main():
         l2.append(random.randint(-MAX, MAX))
    for i in range(MAX):
         l3.append(random.randint(-MAX, MAX))
-   
+
+
    ti1 = time.time()
    insercion(l1)
    tf1 = time.time()
@@ -77,7 +78,7 @@ def main():
    
    print("insercion tomo: ",t1)
    print("seleccion tomo: ",t2)
-   print("burbujeo: ",t3)
+   print("burbujeo: ", t3)
    # print("Termine de ordenar")
 
 
