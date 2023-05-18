@@ -1,0 +1,17 @@
+Se cuenta con un archivo CSV que registra los casos de COVID en Latinoamérica desde el primero detectado, tomándolo comoo día 1.
+Este archivo está ordenado por día y, dentro de día, por país.
+Los datos son:
+día,país,ciudad,cantidad_casos
+
+Ejemplo:
+1,Argentina,Buenos Aires,2
+1,Argentina,Córdoba,1
+1,Brasil,San Pablo,3
+1,Chile,Santiago de Chile,1
+2,Bolivia,La Paz,2
+4,Argentina,Buenos Aires,5
+4,Argentina,Santa Fe,1
+4,Perú,Lima,3
+...
+
+Se pide hacer en Python un CC de dos niveles: por día y por país, informando los subtotales y el total general.

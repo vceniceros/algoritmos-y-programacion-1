@@ -1,0 +1,11 @@
+2020-01-31,Nardi Romina,1000
+2020-01-31,Nardi Romina,4300
+2020-01-31,Nardi Romina,3300
+2020-01-31,Perez Luis,2300
+2020-02-02,Messi Lionel,4400
+2020-02-02,Messi Lionel,5600
+2020-02-02,Perez Luis,1000
+2020-02-05,Messi Lionel,3200
+2020-02-05,Perez Luis,2200
+2020-02-05,Perez Luis,1100
+2020-02-06,Perez Luis,3000
