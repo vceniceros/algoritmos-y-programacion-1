@@ -9,7 +9,7 @@
 """
 
 # constantes 
-MAX_DIA = 999
+MAX_DIA = 999999999999
 MAX_REG = str(MAX_DIA) + ",xxx,xxx,0"
 ARCHIVO = "casos_covid.csv"
 DIA = 0
