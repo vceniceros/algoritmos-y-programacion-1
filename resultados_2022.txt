@@ -1,3 +1,8 @@
-1,qatar,0,ecuador,2
-2,japon,0,costa rica,1
-2,argentina,1,arabia,2
+1,España,2,Alemania,1
+2,Argentina,1,Francia,1
+2,Portugal,2,Inglaterra,3
+3,Francia,1,España,3
+3,Inglaterra,0,Argentina,1
+3,España,3,Brasil,2
+4,Brasil,2,Inglaterra,1
+4,Alemania,1,Portugal,0

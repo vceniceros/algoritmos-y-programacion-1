@@ -1,3 +1,5 @@
-1,Brasil,3,Croacia,1
-2,Mexico,1,Camerun,0
-4,Argentina,2,Bosnia,1
+1,Brasil,3,Argentina,2
+2,Francia,2,Alemania,1
+2,Inglaterra,1,Italia,1
+4,España,4,Portugal,2
+4,Argentina,2,Brasil,3
