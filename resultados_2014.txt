@@ -1,0 +1,3 @@
+1,Brasil,3,Croacia,1
+2,Mexico,1,Camerun,0
+4,Argentina,2,Bosnia,1

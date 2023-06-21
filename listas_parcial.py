@@ -26,8 +26,6 @@ def posibles_amistades(personas, intereses, COINCIDENCIAS_MINIMAS = 2):
                 coincidencia +=1
         if coincidencia >= COINCIDENCIAS_MINIMAS:
             posibles_amistades.append(persona)
-    if len(posibles_amistades) == 1:
-        posibles_amistades.clear()
     return posibles_amistades
 
 Personas = ["Camila", ["natación", "gimnasio", "vol", "futbol"], "Mario", ["natación", "basquet", "gimnasio", "cine"], "Rosa", ["cine", "teatro", "natación" ]] 

@@ -1,0 +1,3 @@
+1,Rusia,5,Arabia,0
+2,Egipto,0,Uruguay,1
+4,Argentina,1,Isladia,1
