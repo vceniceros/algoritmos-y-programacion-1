@@ -117,7 +117,7 @@ def mating_archive(parcial1):
         nota_final = suma_nota_final/4
         write_mating_archive(parcial1, str(padron), str(nota_final))
         padron, nota_1, nota_2, nota_3, nota_4 = read_Lines(correctores)
-
+#merge mezcla, apareo actualiza en base al merge
 mating_archive(parcial1)        
 correctores.close()
 parcial1.close()
