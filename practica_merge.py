@@ -220,3 +220,4 @@ aprobados.close()
 reprobados.close()
 curso.close()
 parcial1_curso.close()
+
