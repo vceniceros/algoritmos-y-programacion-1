@@ -20,7 +20,7 @@ LOCAL = 1
 GOLES_LOCAL = 2
 VISITANTE = 3
 GOLES_VISTANTE = 4
-ULTIMA_LINEA = ['','','','','']
+
 
 def leer_Archivo(archivo):
     linea = archivo.readline()
