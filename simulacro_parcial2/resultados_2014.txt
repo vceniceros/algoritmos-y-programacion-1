@@ -1,0 +1,9 @@
+1,Brasil,3,Croacia,1
+2,México,1,Camerún,0
+2,España,1,PaisesBajos,5
+2,Colombia,3,Grecia,0
+3,Uruguay,1,CostaRica,3
+3,Inglaterra,1,Italia,2
+3,Congo,2,Japón,1
+4,Suiza,2,Ecuador,1
+4,Francia,3,Honduras,0

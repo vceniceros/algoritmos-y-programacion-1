@@ -1,12 +1,12 @@
 1,Brasil,3,Argentina,2,2014
-1,Alemania,0,Francia,2,2018
-1,España,2,Alemania,1,2022
 2,Francia,2,Alemania,1,2014
 2,Inglaterra,1,Italia,1,2014
-2,Italia,3,Inglaterra,1,2018
-2,Portugal,1,España,2,2018
 2,Francia,3,Portugal,0,2018
-2,Argentina,1,Francia,1,2022
+3,Inglaterra,0,Argentina,1,2022
+3,España,3,Brasil,2,2022
+4,Alemania,1,Argentina,3,2018
+4,Alemania,1,Portugal,0,2022
+gentina,1,Francia,1,2022
 2,Portugal,2,Inglaterra,3,2022
 3,Francia,1,España,3,2022
 3,Inglaterra,0,Argentina,1,2022
