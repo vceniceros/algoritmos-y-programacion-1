@@ -3,7 +3,7 @@
 2,Marruecos,0,Irán,1
 2,Portugal,3,España,3
 3,Francia,2,Australia,1
-3,Argentina,1,Islandia,1
+3,Argentina,1,Islandia,0
 3,Perú,0,Dinamarca,1
 4,Croacia,2,Nigeria,0
 4,CostaRica,0,Serbia,1

@@ -1,5 +1,5 @@
 1,Argentina,1,Ecuador,0
-2,Colombia,0,Paraguay,0
+2,Colombia,2,Paraguay,0
 2,Brasil,3,Venezuela,0
 2,Uruguay,0,Bolivia,0
 3,Chile,1,Ecuador,1
